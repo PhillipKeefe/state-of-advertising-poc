@@ -582,7 +582,6 @@ export default function VerticalPctChangeChart({
               height={detailTextHeight}
             >
               <div
-                xmlns="http://www.w3.org/1999/xhtml"
                 style={{
                   width: "100%",
                   fontSize: `${detailParaFontPx}px`,
@@ -671,7 +670,6 @@ export default function VerticalPctChangeChart({
           {selectedAdvertiser && selectedVertical && (
             <foreignObject x={0} y={advertiserDetailTop} width={vbWidth} height={advertiserDetailHeight}>
               <div
-                xmlns="http://www.w3.org/1999/xhtml"
                 style={{
                   width: "100%",
                   display: "flex",
