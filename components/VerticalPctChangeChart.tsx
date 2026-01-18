@@ -145,10 +145,11 @@ export default function VerticalPctChangeChart({
   const detailParaFontPx = 16; // "The following chart contains..." smaller
   const bottomNarrativeFontPx = detailParaFontPx; // match bottom narrative to above paragraph
 
-  const detailTextHeight = 70;
+  const detailTextHeight = 110; // was 70; prevent paragraph clipping
 
   // Next blocks stack from detailTextTop
   const advertiserChartTop = detailTextTop + detailTextHeight + 6;
+
   const advertiserChartHeight = 250;
 
   const advertiserDetailTop = advertiserChartTop + advertiserChartHeight + 18;
