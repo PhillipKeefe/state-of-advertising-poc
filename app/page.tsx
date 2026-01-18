@@ -188,9 +188,11 @@ try {
   const adv24Rows = csvParse(fs.readFileSync(adv24Path, "utf-8"));
   const adv25Rows = csvParse(fs.readFileSync(adv25Path, "utf-8"));
 
-  const getCols = (rows: any[]) => rows.columns ?? Object.keys(rows[0] ?? {});
+  const getCols = (rows: any[]) =>
+  ((rows as any).columns as string[] | undefined) ?? Object.keys(rows[0] ?? {});
   const c24 = adv24Rows.length ? getCols(adv24Rows) : [];
   const c25 = adv25Rows.length ? getCols(adv25Rows) : [];
+
 
   if (!adv24Rows.length || !adv25Rows.length) {
     advertiserDetailsByName = {};
