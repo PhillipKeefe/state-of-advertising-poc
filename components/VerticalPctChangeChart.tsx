@@ -766,11 +766,17 @@ export default function VerticalPctChangeChart({
                           marginBottom: "12px",
                         }}
                       >
-                        {/* 2H 2024: number adjacent to bar; bar ends at axis (right) */}
-                        <div style={{ display: "flex", justifyContent: "flex-end", alignItems: "center", gap: "10px" }}>
-                          <div style={{ textAlign: "right", minWidth: "84px" }}>{row.leftTxt}</div>
-
-                          <div style={{ position: "relative", height: `${metricBarH}px`, width: `${metricBarMaxPx}px` }}>
+                        {/* 2H 2024: label sits next to the BAR START (dynamic); bar ends at axis (right) */}
+                        <div style={{ display: "flex", justifyContent: "flex-end", alignItems: "center" }}>
+                          <div
+                            style={{
+                              position: "relative",
+                              height: `${metricBarH}px`,
+                              width: `${metricBarMaxPx}px`,
+                              overflow: "visible",
+                            }}
+                          >
+                            {/* axis line (bar ends here) */}
                             <div
                               style={{
                                 position: "absolute",
@@ -781,6 +787,8 @@ export default function VerticalPctChangeChart({
                                 background: axisColor,
                               }}
                             />
+
+                            {/* bar */}
                             <div
                               style={{
                                 position: "absolute",
@@ -793,8 +801,23 @@ export default function VerticalPctChangeChart({
                                 boxSizing: "border-box",
                               }}
                             />
+
+                            {/* label pinned to start (left edge) of the bar */}
+                            <div
+                              style={{
+                                position: "absolute",
+                                top: "50%",
+                                transform: "translateY(-50%)",
+                                right: `${leftW + 12}px`,  // <-- label sits just left of bar start; if bar shrinks, it moves right
+                                whiteSpace: "nowrap",
+                                textAlign: "right",
+                              }}
+                            >
+                              {row.leftTxt}
+                            </div>
                           </div>
                         </div>
+
 
                         {/* pct */}
                         <div style={{ textAlign: "center", fontWeight: 700, color: pctColor }}>{fmtPct(row.pct)}</div>
